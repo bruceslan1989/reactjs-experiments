@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 class AddProject extends Component {
     static defaultProps = {
@@ -31,10 +32,13 @@ class AddProject extends Component {
             this.refs.category.value
         );
 
-        this.setState({project: {
-            title: this.refs.title.value,
-            category: this.refs.category.value
-        }}, function() {
+        this.setState({
+            project: {
+                id: uuid.v4(),
+                title: this.refs.title.value,
+                category: this.refs.category.value
+            }
+        }, function() {
             this.props.creatingCallback(this.state.project);
             this.refs.title.value = null;
             this.refs.category.value = 'Category 1';
