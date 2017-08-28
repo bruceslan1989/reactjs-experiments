@@ -3,13 +3,13 @@ import Projects from './components/Projects';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="app">
-          <Projects />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="app">
+                <Projects />
+            </div>
+        );
+    }
 }
 
 export default App;
