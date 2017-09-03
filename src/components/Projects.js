@@ -5,26 +5,26 @@ import AddProject from "./AddProject";
 
 class Projects extends Component {
     componentWillMount() {
-        this.props.dispatch({'type': 'CREATE', 'payload': {
+        this.props.dispatch({'type': 'CREATE', 'project': {
             title: 'Experts',
             category: 'App'
         }});
-        this.props.dispatch({'type': 'CREATE', 'payload': {
+        this.props.dispatch({'type': 'CREATE', 'project': {
             title: 'Gold & People',
             category: 'App'
         }});
-        this.props.dispatch({'type': 'CREATE', 'payload': {
+        this.props.dispatch({'type': 'CREATE', 'project': {
             title: 'Museums Online',
             category: 'App'
         }});
     }
 
     handleCreating(project) {
-        this.props.dispatch({'type': 'CREATE', 'payload': project});
+        this.props.dispatch({'type': 'CREATE', 'project': project});
     }
 
     handleDeleting(id) {
-        this.props.dispatch({'type': 'DELETE', 'payload': id});
+        this.props.dispatch({'type': 'DELETE', 'id': id});
     }
 
     render() {
