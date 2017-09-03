@@ -1,20 +1,23 @@
 import uuid from 'uuid';
 
-const projectReducers = (state = { projects: [], categories: [] }, action) => {
+const projectReducers = (state = {
+    projects: [],
+    categories: []
+}, action) => {
     switch (action.type) {
         case "CREATE": {
-            state = {...state};
             action.payload.id = uuid.v4();
-            state.projects.push(action.payload);
+            state = {...state, projects: [...state.projects, action.payload]};
             break;
         }
         case "DELETE": {
-            state = {...state};
             let index = state.projects.findIndex(project => project.id === action.payload);
             state.projects.splice(index, 1);
+            state = {...state, projects: [...state.projects]};
             break;
         }
         default: {
+            state = {...state};
             break;
         }
     }

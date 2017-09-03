@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Project from "./Project";
 import AddProject from "./AddProject";
 
@@ -47,12 +46,12 @@ class Projects extends Component {
     }
 }
 
-const mapStore = (store) => {
+const mapStateToProps = (store) => {
     return {
         projects: store.projects
     }
 };
 
-Projects = connect(mapStore)(Projects);
+Projects = connect(mapStateToProps)(Projects);
 
 export default Projects;
