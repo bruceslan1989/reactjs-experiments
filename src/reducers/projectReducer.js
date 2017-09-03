@@ -5,6 +5,10 @@ const projectReducers = (state = {
     categories: []
 }, action) => {
     switch (action.type) {
+        case "FETCH": {
+            state = {...state, projects: action.projects};
+            break;
+        }
         case "CREATE": {
             action.project.id = uuid.v4();
             state = {...state, projects: [...state.projects, action.project]};

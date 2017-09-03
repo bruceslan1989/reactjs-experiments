@@ -2,29 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Project from "./Project";
 import AddProject from "./AddProject";
+import * as projectActions from "./../actions/projectActions";
 
 class Projects extends Component {
     componentWillMount() {
-        this.props.dispatch({'type': 'CREATE', 'project': {
-            title: 'Experts',
-            category: 'App'
-        }});
-        this.props.dispatch({'type': 'CREATE', 'project': {
-            title: 'Gold & People',
-            category: 'App'
-        }});
-        this.props.dispatch({'type': 'CREATE', 'project': {
-            title: 'Museums Online',
-            category: 'App'
-        }});
+        this.props.dispatch(projectActions.fetchProjects());
     }
 
     handleCreating(project) {
-        this.props.dispatch({'type': 'CREATE', 'project': project});
+        this.props.dispatch(projectActions.createProject(project));
     }
 
     handleDeleting(id) {
-        this.props.dispatch({'type': 'DELETE', 'id': id});
+        this.props.dispatch(projectActions.deleteProject(id));
     }
 
     render() {
