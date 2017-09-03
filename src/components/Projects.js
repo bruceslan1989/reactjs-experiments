@@ -1,55 +1,36 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
+import { connect } from 'react-redux';
+
 import Project from "./Project";
 import AddProject from "./AddProject";
 
 class Projects extends Component {
-
-    constructor() {
-        super();
-        this.state = {
-            projects: []
-        }
-    }
-
     componentWillMount() {
-        this.setState({
-            projects: [{
-                id: uuid.v4(),
-                title: "Title 1",
-                category: "Category 1"
-            }, {
-                id: uuid.v4(),
-                title: "Title 2",
-                category: "Category 2"
-            }, {
-                id: uuid.v4(),
-                title: "Title 3",
-                category: "Category 3"
-            }]
-        });
+        this.props.dispatch({'type': 'CREATE', 'payload': {
+            title: 'Experts',
+            category: 'App'
+        }});
+        this.props.dispatch({'type': 'CREATE', 'payload': {
+            title: 'Gold & People',
+            category: 'App'
+        }});
+        this.props.dispatch({'type': 'CREATE', 'payload': {
+            title: 'Museums Online',
+            category: 'App'
+        }});
     }
 
     handleCreating(project) {
-        let projects = this.state.projects;
-        projects.push(project);
-        this.setState({
-            projects: projects
-        })
+        this.props.dispatch({'type': 'CREATE', 'payload': project});
     }
 
     handleDeleting(id) {
-        let projects = this.state.projects;
-        let index = projects.findIndex(project => project.id === id);
-        projects.splice(index, 1);
-        this.setState({
-            projects: projects
-        })
+        this.props.dispatch({'type': 'DELETE', 'payload': id});
     }
 
     render() {
         let projects;
-        projects = this.state.projects.map(project => {
+        projects = this.props.projects.map(project => {
             return (
                 <Project key={project.title} project={project} deletingCallback={this.handleDeleting.bind(this)}/>
             );
@@ -65,5 +46,13 @@ class Projects extends Component {
         );
     }
 }
+
+const mapStore = (store) => {
+    return {
+        projects: store.projects
+    }
+};
+
+Projects = connect(mapStore)(Projects);
 
 export default Projects;
