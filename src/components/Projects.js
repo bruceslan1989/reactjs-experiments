@@ -7,6 +7,7 @@ import * as projectActions from "./../actions/projectActions";
 class Projects extends Component {
     componentWillMount() {
         this.props.dispatch(projectActions.fetchProjects());
+        this.props.dispatch(projectActions.triggerProjectError());
     }
 
     handleCreating(project) {

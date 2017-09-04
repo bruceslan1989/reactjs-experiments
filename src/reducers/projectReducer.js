@@ -20,6 +20,9 @@ const projectReducers = (state = {
             state = {...state, projects: [...state.projects]};
             break;
         }
+        case "E": {
+            throw new Error('We are dead!');
+        }
         default: {
             state = {...state};
             break;

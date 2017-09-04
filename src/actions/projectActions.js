@@ -27,3 +27,9 @@ export function deleteProject(id) {
         'id': id
     }
 }
+
+export function triggerProjectError() {
+    return {
+        'type': 'E'
+    }
+}
