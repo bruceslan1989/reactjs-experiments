@@ -4,6 +4,7 @@ import uuid from 'uuid';
 const reducer = (state = { projects: [], categories: [] }, action) => {
     switch (action.type) {
         case constants.FETCH_PROJECTS: {
+            console.log('fetch');
             return {...state, projects: [{
                 id: uuid.v4(),
                 title: 'Metal Gear Solid'

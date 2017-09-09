@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions  from "../actions/actions";
+import Table  from "../../../components/Table";
 
 class Projects extends Component {
     componentWillMount() {
@@ -8,19 +9,12 @@ class Projects extends Component {
     }
 
     render() {
-        let projects;
-        projects = this.props.projects.map(project => {
-            return (
-                <li key={project.title}>{project.title}</li>
-            );
-        });
+        let projects = this.props.projects;
         return (
             <div>
                 <h1>Projects</h1>
                 <div className="projects">
-                    <ul>
-                        {projects}
-                    </ul>
+                    <Table rows={projects}/>
                 </div>
             </div>
         );
