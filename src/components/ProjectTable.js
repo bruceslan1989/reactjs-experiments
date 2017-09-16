@@ -1,4 +1,5 @@
-import React from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
 
 const ProjectTable = ({rows}) => (
     <table>
@@ -13,5 +14,9 @@ const ProjectTable = ({rows}) => (
         </tbody>
     </table>
 );
+
+ProjectTable.propTypes = {
+    rows: PropTypes.array
+};
 
 export default ProjectTable;
