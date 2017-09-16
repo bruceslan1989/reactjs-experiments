@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions  from "../actions/actions";
-import Table  from "../../../components/Table";
+import ProjectTable  from "../../../components/ProjectTable";
 
 class Projects extends Component {
     componentWillMount() {
@@ -9,12 +9,19 @@ class Projects extends Component {
     }
 
     render() {
-        let projects = this.props.projects;
+        let rows = this.props.projects.map(row => {
+            return (
+                <tr key={row.id}>
+                    <td>{row.id}</td>
+                    <td>{row.title}</td>
+                </tr>
+            );
+        });
         return (
             <div>
                 <h1>Projects</h1>
                 <div className="projects">
-                    <Table rows={projects}/>
+                    <ProjectTable rows={rows}/>
                 </div>
             </div>
         );
