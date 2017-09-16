@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Table extends Component {
     render() {
@@ -25,5 +26,9 @@ class Table extends Component {
       )
   }
 }
+
+Table.propTypes = {
+    rows: PropTypes.array
+};
 
 export default Table;

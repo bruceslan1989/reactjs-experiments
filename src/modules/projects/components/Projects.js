@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as actions  from "../actions/actions";
 import ProjectTable  from "../../../components/ProjectTable";
 
@@ -27,6 +28,10 @@ class Projects extends Component {
         );
     }
 }
+
+Projects.propTypes = {
+    projects: PropTypes.array
+};
 
 const mapStoreToProps = (store) => {
     return {
