@@ -7,6 +7,7 @@ class App extends Component {
         return (
             <div className="app">
                 <Nav/>
+                <h1>App</h1>
                 {children}
             </div>
         );
